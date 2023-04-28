@@ -1,0 +1,142 @@
+java.util.function 包下的四大 Function
+函数式编程为 jdk1.8 新特性，学习好利用好，编程变得更加美好~
+
+1. Consumer 消费者
+
+public interface Consumer<T> {
+
+    void accept(T t);
+}
+从名字可以看出，消费者是来消费的，它接受一个数据，没有任何返回值。
+
+简单使用：比如我们只想打印列表中的每个元素，这里的 forEach(Consumer) 里面接受的参数就是一个 Consumer
+
+        List<Object> objects = Arrays.asList("a", "b", "c");
+        objects.stream().forEach(s -> System.out.println(s));
+Comsumer 家族成员
+
+1. 一次消费两个数据
+public interface BiConsumer<T, U> {
+    void accept(T t, U u);
+}
+2. 消费一个Double类型的数据
+public interface DoubleConsumer {
+    void accept(double value);
+}
+3. 消费一个int数据
+public interface IntConsumer {
+    void accept(int value);
+}
+4. 消费一个Long数据
+public interface LongConsumer {
+    void accept(long value);
+}
+5. 消费两个数据，其中一个为Double类型
+public interface ObjDoubleConsumer<T> {
+    void accept(T t, double value);
+}
+6. 消费两个数据，其中一个为Int类型
+public interface ObjIntConsumer<T> {
+    void accept(T t, int value);
+}
+7. 消费两个数据，其中一个为Long类型
+public interface ObjLongConsumer<T> {
+    void accept(T t, long value);
+}
+2. Function 转换器
+
+public interface Function<T, R> {
+    R apply(T t);
+}
+Function 接受一个数据，返回一个数据。
+简单案例：Steam 的 map 函数接受一个 Function，接受一个数据，进行一定的处理后返回另一个数据，当然也可以不处理直接返回。
+
+List<Object> objects = Arrays.asList("a", "b", "c");
+objects.stream().map(t -> {return t + " hello";}).forEach(System.out::println);
+Function 家族
+
+1. 接受两个数据，返回一个结果
+public interface BiFunction<T, U, R> {
+    R apply(T t, U u);
+}
+2. 接受一个double类型数据，返回一个结果
+public interface DoubleFunction<R> {
+    R apply(double value);
+}
+3. 接受一个double类型，返回一个int类型数据
+public interface DoubleToIntFunction {
+    int applyAsInt(double value);
+}
+4. 接受一个double，返回一个long类型
+public interface DoubleToLongFunction {
+    long applyAsLong(double value);
+}
+5. 接受一个int，返回一个结果
+public interface IntFunction<R> {
+    R apply(int value);
+}
+6. 还有IntToDoubleFunction, IntToLongFunction, LongFunction, LongToDoubleFunction, LongToIntFunction, ToDoubleBiFunction, ToDoubleFunction, ToDoubleFunction, ToIntBiFunction, ToIntFunction, ToLongBiFunction, ToLongFunction等，根据名字很容易理解其作用，不一一贴上源码。
+
+3. Predicate 裁判
+
+public interface Predicate<T> {
+    boolean test(T t);
+}
+Predicate 接受一个参数，返回 true 或 false。
+简单使用：Stream 的 filter() 方法接受一个 Predicate，筛选出结果为 true 的数据。
+
+List<Object> objects = Arrays.asList("a", "b", "c");
+objects.stream().filter(s -> { return s.equals("a"); }).forEach(System.out::println);
+Predicate 家族
+
+1. 接受两个参数，返回true or false
+public interface BiPredicate<T, U> {
+    boolean test(T t, U u);
+}
+2. 接受一个double，返回true or false
+public interface DoublePredicate {
+    boolean test(double value);
+}
+3. 接受一个int，返回true or false
+public interface IntPredicate {
+    boolean test(int value);
+}
+4. 接受一个Long，返回true or false
+public interface LongPredicate {
+    boolean test(long value);
+}
+4. Supplier 供应商
+
+public interface Supplier<T> {
+    T get();
+}
+Supplier 无需参数，返回一个结果。
+简单使用：
+
+Supplier<String> supplier = new Supplier<String>() {
+        @Override
+        public String get() {
+            return "hello world";
+        }
+};
+    String s = supplier.get();
+    System.out.println(s);
+Supplier 家族
+
+1. 返回boolean值
+public interface BooleanSupplier {
+    boolean getAsBoolean();
+}
+2. 返回double
+public interface DoubleSupplier {
+    double getAsDouble();
+}
+3. 返回int
+public interface IntSupplier {
+    int getAsInt();
+}
+4. 返回long
+public interface LongSupplier {
+    long getAsLong();
+}
+总结：1.8 新增的函数式接口在 Stream 流中有众多应用，后续将继续学习 Stream 流。
