@@ -24,11 +24,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>redis.clients</groupId>-->
-        <!--            <artifactId>jedis</artifactId>-->
-        <!--            <version>3.1.0</version>-->
-        <!--        </dependency>-->
+
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -57,6 +53,21 @@
             <artifactId>guava</artifactId>
             <version>23.0</version>
         </dependency>
+        <!-- 对应http工具类 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <!-- 对应http工具类 -->
+
+        <!-- 对应json工具类 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+        <!-- 对应json工具类 -->
 
     </dependencies>
     <dependencyManagement>
