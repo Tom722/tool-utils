@@ -68,6 +68,21 @@
             <version>2.12.3</version>
         </dependency>
         <!-- 对应json工具类 -->
+        <!-- hutool工具类 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.10</version>
+        </dependency>
+        <!-- hutool工具类 -->
+
+        <!-- 对象拷贝 -->
+        <dependency>
+            <groupId>uk.com.robust-it</groupId>
+            <artifactId>cloning</artifactId>
+            <version>1.9.12</version>
+        </dependency>
+        <!-- 对象拷贝 -->
 
     </dependencies>
     <dependencyManagement>

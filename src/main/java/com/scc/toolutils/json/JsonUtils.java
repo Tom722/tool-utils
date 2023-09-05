@@ -21,13 +21,26 @@ public class JsonUtils {
     public JsonUtils() {
     }
 
+    public static void main(String[] args) {
+        List<String> strings = new ArrayList<>();
+        strings.add("ss");
+        strings.add("zx");
+        strings.add("fff");
+        String s = JSONObject.toJSONString(strings);
+        System.out.println(s);
+        String s1 = JSONArray.toJSONString(strings);
+        System.out.println(s1);
+
+        String ss = "ssss";
+        JSONObject.parse(ss);
+    }
     public void init() {
         // 配置Json字符串中属性，在要转化对象的不存在时不报错
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         // 配置时间序列（不使用时间序列）
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
-    
+
     // 测试用例--> Json字符串中有某个对象的值为集合，并且集合类型为Object
     public void test1(){
         JSONObject jsonObject = new JSONObject();
